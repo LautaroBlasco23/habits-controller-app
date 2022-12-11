@@ -8,8 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const pg_1 = require("pg");
+const bcrypt_1 = __importDefault(require("bcrypt"));
+const uuid_1 = require("uuid");
 require("dotenv/config");
 class AuthDatabaseController {
     constructor() {
@@ -21,25 +26,55 @@ class AuthDatabaseController {
     }
     getUserByEmail() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.pool.connect();
-            const queryResult = yield this.pool.query(`
-        SELECT * 
-        FROM ${process.env.DB_USERS_TABLE}
-        `);
-            return queryResult.rows;
+            try {
+                yield this.pool.connect();
+                const queryResult = yield this.pool.query(`
+            SELECT * 
+            FROM ${process.env.DB_USERS_TABLE}
+            `);
+                return queryResult.rows;
+            }
+            catch (error) {
+                return null;
+            }
         });
     }
     isEmailAlreadyOnUse(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.pool.connect();
-            const queryResult = yield this.pool.query(`
-        SELECT id 
-        FROM ${process.env.DB_USERS_TABLE}
-        `);
+            try {
+                yield this.pool.connect();
+                const queryResult = yield this.pool.query(`
+            SELECT id 
+            FROM ${process.env.DB_USERS_TABLE}
+            WHERE email=$1
+            `, [email]);
+                if (queryResult.rows.length == 0)
+                    return false;
+                return true;
+            }
+            catch (error) {
+                return null;
+            }
         });
     }
     createNewUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.pool.connect();
+                const { email, username, password } = user;
+                const id = (0, uuid_1.v4)();
+                const encryptedPassword = yield bcrypt_1.default.hash(password, Number(process.env.SALT_ROUNDS));
+                yield this.pool.query(`
+            INSERT INTO users
+            (id, email, username, password)
+            VALUES
+            ($1, $2, $3, $4)
+            `, [id, email, username, encryptedPassword]);
+                return id;
+            }
+            catch (error) {
+                return null;
+            }
         });
     }
 }

@@ -12,11 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const models_1 = __importDefault(require("../models"));
+const register_form_checker_1 = __importDefault(require("../utils/register-form-checker"));
 class AuthController {
     Register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = yield models_1.default.getAllUsers();
+            const { username, email, password } = req.body;
+            const data = (0, register_form_checker_1.default)(username, email, password);
             res.send(data);
         });
     }
