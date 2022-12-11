@@ -1,4 +1,6 @@
-node_modules/
-src/
-.env
+### Server:
+server/node_modules/
+server/src/
+server/.env
 
+### Client:
