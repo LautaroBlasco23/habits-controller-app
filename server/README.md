@@ -11,15 +11,15 @@ Node (Typescript) / PostgreSQL / React (javascript)
 ## Entities: 
 
 User *(data types)*:
-* user_id: string (generated with uuid)
+* user_id: string
 * username: string
-* email: string | unique
-* password: string (encoded using bcrypt)
+* email: string
+* password: string
 
 Activities *(data types)*:
-- act_id: string (generated with uuid)
+- act_id: string 
 - name: string
-- time: string (date like)
+- time: string
 
 ## API ENDPOINTS
 
@@ -42,4 +42,3 @@ Activities *(data types)*:
 * METHOD    URL                     FUNCTION        INNPUT            OUTPUT
 * POST      "/login"                Login           email, password | Token
 * POST      "/register"             Register        User            | userId & Token
-* 

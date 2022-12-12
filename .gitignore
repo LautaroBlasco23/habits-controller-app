@@ -1,6 +1,6 @@
 ### Server:
 server/node_modules/
-server/src/
+server/lib/
 server/.env
 
 ### Client:
