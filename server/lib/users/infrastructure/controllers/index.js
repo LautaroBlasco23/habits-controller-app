@@ -24,7 +24,6 @@ const UserControllers = {
     getUserById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
-            console.log(id);
             const user = yield postgres_1.default.getUserById(id);
             if (user == null)
                 return res.status(400).send("user not found");
