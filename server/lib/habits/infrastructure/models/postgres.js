@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pg_1 = require("pg");
 require("dotenv/config");
 const uuid_1 = require("uuid");
-;
 class HabitPostgresControllers {
     constructor() {
         this.pool = new pg_1.Pool({
@@ -117,4 +116,5 @@ class HabitPostgresControllers {
         });
     }
 }
+;
 exports.default = new HabitPostgresControllers();

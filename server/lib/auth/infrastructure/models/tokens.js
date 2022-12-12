@@ -8,7 +8,7 @@ require("dotenv/config");
 const tokenControllers = {
     generateToken: (payload) => {
         const newToken = jsonwebtoken_1.default.sign(payload, process.env.JWT_SECRET);
-        return newToken;
+        return { token: newToken };
     },
     isTokenValid: (token) => {
         const isValid = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);

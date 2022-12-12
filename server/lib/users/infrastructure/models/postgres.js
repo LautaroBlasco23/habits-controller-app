@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const pg_1 = require("pg");
 require("dotenv/config");
-;
 class UsersPostgresControllers {
     constructor() {
         this.pool = new pg_1.Pool({

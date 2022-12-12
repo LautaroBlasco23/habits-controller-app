@@ -16,7 +16,6 @@ const pg_1 = require("pg");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const uuid_1 = require("uuid");
 require("dotenv/config");
-;
 class AuthDatabaseController {
     constructor() {
         this.pool = new pg_1.Pool({
