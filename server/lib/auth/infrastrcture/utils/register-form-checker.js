@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const checkInputs = (username, email, password) => {
+const checkRegisterInputs = (username, email, password) => {
     // General undefined checks
     if (username == undefined || email == undefined || password == undefined)
         return 'there are missing fields';
@@ -18,5 +18,6 @@ const checkInputs = (username, email, password) => {
     //pasword
     if (password.length < 4)
         return "password length < 4";
+    return null;
 };
-exports.default = checkInputs;
+exports.default = checkRegisterInputs;
