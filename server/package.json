@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc-watch --OnSuccess \"node lib/app.js\"",
+    "dev": "NODE_ENV=development tsc-watch --OnSuccess \"node lib/app.js\"",
     "build": "tsc",
-    "start": "node lib/app.js"
+    "start": "NODE_ENV=production node lib/app.js"
   },
   "keywords": [],
   "author": "",

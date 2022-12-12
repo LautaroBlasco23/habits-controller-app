@@ -5,10 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("dotenv/config");
-const routes_1 = __importDefault(require("./auth/infrastrcture/routes"));
+const routes_1 = __importDefault(require("./auth/infrastructure/routes"));
+const routes_2 = __importDefault(require("./users/infrastructure/routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use("/api/auth", routes_1.default);
+app.use("/api/users", routes_2.default);
 app.listen(process.env.PORT, () => {
     console.log("server running on port:", process.env.PORT);
 });
