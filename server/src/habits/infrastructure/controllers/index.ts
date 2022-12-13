@@ -6,7 +6,8 @@ const HabitControllers = {
     async getUserHabits(req: Request, res: Response) {
         const userid = req.params.userid;
         const listOfHabits = await HabitPostgresControllers.getUserHabits(userid);
-        if( listOfHabits == null ) return res.status(200).send("this user doesn't have habits") 
+        if( listOfHabits == null ) return res.status(500).send("Error getting habits") 
+        if( listOfHabits.length == 0 ) return res.status(400).send("this user doesn't have habits") 
 
         res.status(200).json(listOfHabits);
     },
