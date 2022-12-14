@@ -1,6 +1,8 @@
 import {Request, Response} from "express";
 import UsersPostgresControllers from "../models/postgres";
 import AuthController from "../../../auth/infrastructure/models/users-postgres";
+import fs from "fs";
+import path from "path";
 
 const UserControllers = {
     async getAllUsers(req: Request, res: Response) {
@@ -37,6 +39,26 @@ const UserControllers = {
         if(deletedUserId == null) return res.status(500).send("server error");
 
         res.status(200).json(deletedUserId);
+    },
+
+    async postUserImage(req: Request, res: Response) {
+        try {
+            const image = req.file;
+            const userid = req.params.userid;
+            fs.renameSync(`./assets/images/${image?.filename}`, `./assets/images/${userid}.jpg`);
+            res.status(201).send(image?.filename);
+        } catch (error) {
+            res.status(500).send('server error')
+        }
+    },
+
+    async getUserImage(req: Request, res: Response) {
+        try {
+            const userid = req.params.userid;
+            res.status(200).sendFile(path.join(__dirname, "../", "../", "../", "../", "assets", "images", `${userid}.jpg`))
+        } catch (error) {
+            res.status(500).send("server error");
+        }
     }
 };
 
