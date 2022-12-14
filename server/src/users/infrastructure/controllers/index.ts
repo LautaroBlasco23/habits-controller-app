@@ -55,7 +55,9 @@ const UserControllers = {
     async getUserImage(req: Request, res: Response) {
         try {
             const userid = req.params.userid;
-            res.status(200).sendFile(path.join(__dirname, "../", "../", "../", "../", "assets", "images", `${userid}.jpg`))
+            const imagePath = path.join(__dirname, "../", "../", "../", "../", "assets", "images", `${userid}.jpg`);
+            if(!fs.existsSync(imagePath)) return res.status(400).send('No image with that user ID')
+            res.status(200).sendFile(imagePath)
         } catch (error) {
             res.status(500).send("server error");
         }
