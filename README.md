@@ -2,11 +2,25 @@
 Fictitional application developed to take controll of your day to day activities. You can write the activities you want to do, and the activities you DON'T want to do. Yo will points for doing the right activities every day.
 
 # APPLICATION SETUP
-You have to create a dot env file with the following variables:
-You also need an postgresql
+You have to create a *.env* file and put the following variables: 
+- PORT
+- DB_HABITS_TABLE
+- DB_NAME
+- DB_USER
+- DB_PASSWORD
+
+**On server/**
+```
+npm run build
+npm run start
+```
+**On client/**
+```
+npm run install
+npm run start
+```
 
 ## SERVER
-
 
 **Basic logic of the api:**
 You Can do any CRUD request to the api endpoints (detailed below)
@@ -53,14 +67,17 @@ DELETE | "/:id" | deleteUser | id | User ID
 
 
 **/api/Habits**
-* METHOD    URL                     FUNCTION        INNPUT            OUTPUT
-* GET       "/user/:userid/:id"     getUserHabits   userid, id      | Promise<Array<habitEntity> | null>
-* GET       "/:id"                  getHabitById    id:             | Habit
-* POST      "/"                     createHabit     Habit           | Habit ID
-* PUT       "/:id                   modifyHabit     id              | Habit ID
-* DELETE    "/:id"                  deleteHabit     id              | Habit ID
+METHOD | URL | FUNCTION | INPUT | OUTPUT
+--- | --- | --- | --- | ---
+GET | "/user/:userid/:id" | getUserHabits | userid, id | Array< Habit >
+GET | "/:id" | getHabitById | id | Habit
+POST | "/" | createHabit | Habit | Habit ID
+PUT | "/:id" | modifyHabit | id | Habit ID
+DELETE | "/:id" | deleteHabit | id | Habit ID
+
 
 **/api/auth**
-* METHOD    URL                     FUNCTION        INNPUT            OUTPUT
-* POST      "/login"                Login           email, password | Token
-* POST      "/register"             Register        User            | userId & Token
+METHOD | URL | FUNCTION | INPUT | OUTPUT
+--- | --- | --- | --- | ---
+POST | "/login" | Login | email, password | Token
+POST | "/register" | Register | User | User ID, Token
