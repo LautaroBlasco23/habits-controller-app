@@ -20,6 +20,12 @@ npm run install
 npm run start
 ```
 
+**Dev mode:**
+```
+On windows: npm run dev:wind 
+On Ubuntu: npm run dev
+```
+
 ## SERVER
 
 **Basic logic of the api:**
