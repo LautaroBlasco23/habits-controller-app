@@ -43,7 +43,9 @@ Activities *(data types)*:
 ## API ENDPOINTS
 
 **/api/user**
+
 METHOD | URL | FUNCTION | INPUT | OUTPUT
+--- | --- | --- | --- | ---
 GET | "/" | getAllUsers | - | Array< User >
 GET | "/:id" | getUserById | id | User
 PUT | "/:id" | modifyUser | id | User ID
