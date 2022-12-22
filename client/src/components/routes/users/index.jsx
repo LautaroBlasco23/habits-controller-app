@@ -5,14 +5,14 @@ function UserContainer() {
     const [user, setUser] = useState({});
 
     useEffect(() => {
+        const myId = localStorage.getItem("myId")
         const fetchData = async () => {
-            await fetch("http://localhost:4105/api/users/d5501ff9-15a3-4cf5-9590-b5b10ddffa53")
+            await fetch(`http://localhost:4105/api/users/${myId}`)
             .then(data => data.json())
             .then(userData => setUser(userData)) 
         };
 
         fetchData();
-        console.log(user)
     }, [])
 
 
