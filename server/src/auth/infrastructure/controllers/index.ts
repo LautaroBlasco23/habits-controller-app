@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 class AuthController {
     
     public async Register(req: Request, res: Response) {
-        
+
         const {username, email, password} = req.body;
         const inputError = checkRegisterInputs(username, email, password);
         if (inputError != null) return res.status(400).send(inputError);

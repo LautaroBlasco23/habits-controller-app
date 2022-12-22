@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development tsc-watch --OnSuccess \"node lib/app.js\"",
-    "dev:wind": "set NODE_ENV=production && tsc-watch --OnSuccess \"node lib/app.js\"",
-    "build": "tsc",
+    "dev:wind": "set NODE_ENV=development && tsc-watch --OnSuccess \"node lib/app.js\"",
+    "build": "tsc && npm install",
     "start": "NODE_ENV=production node lib/app.js"
   },
   "keywords": [],

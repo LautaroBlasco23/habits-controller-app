@@ -87,3 +87,5 @@ METHOD | URL | FUNCTION | INPUT | OUTPUT
 --- | --- | --- | --- | ---
 POST | "/login" | Login | email, password | Token
 POST | "/register" | Register | User | User ID, Token
+
+# Frontend developed with React, Tailwind and Axios.
