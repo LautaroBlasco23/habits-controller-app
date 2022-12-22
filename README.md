@@ -44,13 +44,9 @@ Activities *(data types)*:
 
 **/api/user**
 METHOD | URL | FUNCTION | INPUT | OUTPUT
---- | --- | --- | --- | ---
 GET | "/" | getAllUsers | - | Array< User >
---- | --- | --- | --- | ---
 GET | "/:id" | getUserById | id | User
---- | --- | --- | --- | ---
 PUT | "/:id" | modifyUser | id | User ID
---- | --- | --- | --- | ---
 DELETE | "/:id" | deleteUser | id | User ID
 
 
