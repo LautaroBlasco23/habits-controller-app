@@ -6,8 +6,10 @@ function HabitContainer() {
     const [habits, setHabits] = useState([]);
     
     useEffect(() => {
+        const token = localStorage.getItem("token");
+        console.log(token)
         const fetchData = async () => {
-            fetch("http://localhost:4105/api/habits/user/4444")
+            fetch("http://localhost:4105/api/habits/user/233c98d2-c962-46fd-91c5-520688873748")
             .then((response) => response.json())
             .then((listOfHabits) => setHabits(listOfHabits))
           }
