@@ -65,7 +65,8 @@ class HabitPostgresControllers {
 
             return id;
         } catch (error) {
-            if (process.env.NODE_ENV == "development") console.log(error);
+            console.log(process.env.NODE_ENV === "development")
+            if (!(process.env.NODE_ENV == "development")) console.log(error)
             return null;
         }
     }
